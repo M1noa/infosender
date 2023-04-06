@@ -5,11 +5,12 @@
     <title>Send Visitor Information to Discord Webhook</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Dosis', sans-serif;
+        background-color: #f2f2f2;
       }
       
       #send-button {
-        background-color: #4CAF50;
+        background-color: #5c6bc0;
         border: none;
         color: white;
         padding: 10px 20px;
@@ -23,7 +24,7 @@
       }
       
       #send-button:hover {
-        background-color: #3e8e41;
+        background-color: #3949ab;
       }
       
       .message-title {
@@ -43,6 +44,7 @@
         margin-bottom: 15px;
       }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <button id="send-button">Send Information</button>
@@ -107,10 +109,10 @@
       document.getElementById("referrer").textContent = document.referrer;
       document.getElementById("screen-resolution").textContent = screen.width + "x" + screen.height;
       fetch("https://api.ipify.org?format=json")
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById("ip-address").textContent = data.ip;
-        });
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById("ip-address").textContent = data.ip;
+          });
     </script>
   </body>
 </html>
