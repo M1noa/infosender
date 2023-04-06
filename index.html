@@ -3,36 +3,56 @@
   <head>
     <meta charset="utf-8">
     <title>Send Visitor Information to Discord Webhook</title>
-        <script>
-      function detectVpn() {
-        return new Promise(resolve => {
-          const pc = new RTCPeerConnection();
-          pc.createDataChannel("");
-          pc.createOffer().then(offer => pc.setLocalDescription(offer))
-            .catch(() => resolve(true));
-          pc.onicecandidate = event => {
-            if (event.candidate === null) {
-              resolve(false);
-            }
-          };
-        });
+    <style>
+      body {
+        font-family: Arial, sans-serif;
       }
-
-      window.addEventListener("DOMContentLoaded", function() {
-        detectVpn().then(isVpn => {
-          if (isVpn) {
-            alert("You are using a VPN. Access to this website is blocked.");
-            document.body.innerHTML = "";
-          }
-        });
-      });
-    </script>
-  <body>
-    <h1>Welcome to my website</h1>
-    <p>Please disable your VPN to access the content.</p>
+      
+      #send-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      
+      #send-button:hover {
+        background-color: #3e8e41;
+      }
+      
+      .message-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ff0000;
+        margin-top: 30px;
+      }
+      
+      .field-label {
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      
+      .field-value {
+        margin-bottom: 15px;
+      }
+    </style>
   </head>
   <body>
     <button id="send-button">Send Information</button>
+    <div class="message-title">Visitor Information</div>
+    <div class="field-label">User Agent:</div>
+    <div class="field-value" id="user-agent"></div>
+    <div class="field-label">Referrer:</div>
+    <div class="field-value" id="referrer"></div>
+    <div class="field-label">Screen Resolution:</div>
+    <div class="field-value" id="screen-resolution"></div>
     <script>
       const webhookUrl = "https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN";
 
@@ -70,6 +90,10 @@
           body: JSON.stringify(message)
         });
       });
+      
+      document.getElementById("user-agent").textContent = navigator.userAgent;
+      document.getElementById("referrer").textContent = document.referrer;
+      document.getElementById("screen-resolution").textContent = screen.width + "x" + screen.height;
     </script>
   </body>
 </html>
