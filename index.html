@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Send Visitor Information to Discord Webhook</title>
+        <script>
+      function detectVpn() {
+        return new Promise(resolve => {
+          const pc = new RTCPeerConnection();
+          pc.createDataChannel("");
+          pc.createOffer().then(offer => pc.setLocalDescription(offer))
+            .catch(() => resolve(true));
+          pc.onicecandidate = event => {
+            if (event.candidate === null) {
+              resolve(false);
+            }
+          };
+        });
+      }
+
+      window.addEventListener("DOMContentLoaded", function() {
+        detectVpn().then(isVpn => {
+          if (isVpn) {
+            alert("You are using a VPN. Access to this website is blocked.");
+            document.body.innerHTML = "";
+          }
+        });
+      });
+    </script>
+  <body>
+    <h1>Welcome to my website</h1>
+    <p>Please disable your VPN to access the content.</p>
+  </head>
+  <body>
+    <button id="send-button">Send Information</button>
+    <script>
+      const webhookUrl = "https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN";
+
+      document.getElementById("send-button").addEventListener("click", function() {
+        const message = {
+          embeds: [
+            {
+              title: "Visitor Information",
+              color: 0xff0000,
+              fields: [
+                {
+                  name: "User Agent",
+                  value: navigator.userAgent,
+                  inline: false
+                },
+                {
+                  name: "Referrer",
+                  value: document.referrer,
+                  inline: false
+                },
+                {
+                  name: "Screen Resolution",
+                  value: screen.width + "x" + screen.height,
+                  inline: false
+                }
+              ]
+            }
+          ]
+        };
+        fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(message)
+        });
+      });
+    </script>
+  </body>
+</html>
