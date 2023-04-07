@@ -1,7 +1,7 @@
 # Info Sender
 
-[![ViewCount](https://img.shields.io/endpoint?url=https://hits.dwyl.com/Minoa/bombers.json%3Fcolor%3Dblue&label=Views)](http://hits.dwyl.com/Minoa/infosender)
- [![GitHub Stars](https://img.shields.io/github/stars/M1noa/infosender.svg)](https://github.com/M1noa/bombers/stargazers) [![GitHub forks](https://img.shields.io/github/forks/M1noa/infosender.svg)](https://github.com/M1noa/infosender/network)
+[![ViewCount](https://img.shields.io/endpoint?url=https://hits.dwyl.com/Minoa/infosender.json%3Fcolor%3Dblue&label=Views)](http://hits.dwyl.com/Minoa/infosender)
+ [![GitHub Stars](https://img.shields.io/github/stars/M1noa/infosender.svg)](https://github.com/M1noa/infosender/stargazers) [![GitHub forks](https://img.shields.io/github/forks/M1noa/infosender.svg)](https://github.com/M1noa/infosender/network)
 > (THIS IS FOR EDUCATIONAL PURPOSES ONLY. THIS TOOL ABUSES APIS AND IT'S AGAINST THEIR TOS.)
 
 ## Usage
