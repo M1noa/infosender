@@ -1,55 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Send Visitor Information to Discord Webhook</title>
-    <style>
-      body {
-        font-family: 'Dosis', sans-serif;
-        background-color: #f2f2f2;
-      }
-      
-      #send-button {
-        background-color: #5c6bc0;
-        border: none;
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 20px;
-        cursor: pointer;
-        border-radius: 5px;
-      }
-      
-      #send-button:hover {
-        background-color: #3949ab;
-      }
-      
-      .message-title {
-        font-size: 24px;
-        font-weight: bold;
-        color: #ff0000;
-        margin-top: 30px;
-      }
-      
-      .field-label {
-        font-weight: bold;
-        margin-top: 10px;
-        margin-bottom: 5px;
-      }
-      
-      .field-value {
-        margin-bottom: 15px;
-      }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
     <button id="send-button">Send Information</button>
+
+
     <script>
-      const webhookUrl = "https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN";
+      const webhookUrl = "https://discord.com/api/";
 
       document.getElementById("send-button").addEventListener("click", function() {
         const message = {
@@ -105,5 +58,3 @@
             document.getElementById("ip-address").textContent = data.ip;
           });
     </script>
-  </body>
-</html>
