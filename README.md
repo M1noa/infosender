@@ -7,6 +7,7 @@
 ## Usage
 
 Usage 1. On button Press   Incorperate the code from [on-button.html](https://raw.githubusercontent.com/M1noa/infosender/main/on-button.html) into the html of the page where you want the button to be.
+
 Usage 2. On Load: Use the script from [on-load.js](https://raw.githubusercontent.com/M1noa/infosender/main/on-load.js).
 
 
